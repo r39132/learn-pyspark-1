@@ -1,0 +1,86 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+venv/
+.venv/
+env/
+ENV/
+
+# Environment variables
+.env
+.env.local
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+jupyter_notebook_config.py
+
+# Spark
+metastore_db/
+derby.log
+spark-warehouse/
+.spark-warehouse/
+*.log
+
+# Data and Output
+data/*.csv
+data/*.json
+data/*.parquet
+data/*_parquet/
+data/*_partitioned/
+output/
+*.crc
+_SUCCESS
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# Type checking
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+
+# Linting
+.ruff_cache/
+
+# Keep directory structure
+!data/.gitkeep
+!output/.gitkeep
+
+# Version manager files (keep these for consistency)
+# .python-version
+# .java-version

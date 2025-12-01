@@ -1,0 +1,55 @@
+name: Code Quality
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.12"]
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install uv
+      run: |
+        curl -LsSf https://astral.sh/uv/install.sh | sh
+        echo "$HOME/.cargo/bin" >> $GITHUB_PATH
+
+    - name: Install dependencies
+      run: |
+        uv venv
+        source .venv/bin/activate
+        uv pip install -e ".[dev]"
+
+    - name: Run Black (check only)
+      run: |
+        source .venv/bin/activate
+        black --check jobs/ utils/ *.py
+
+    - name: Run Ruff
+      run: |
+        source .venv/bin/activate
+        ruff check jobs/ utils/ *.py
+
+    - name: Run mypy
+      run: |
+        source .venv/bin/activate
+        mypy jobs/ utils/ *.py
+      continue-on-error: true  # Don't fail build on type errors (optional)
+
+    - name: Run tests
+      run: |
+        source .venv/bin/activate
+        pytest tests/ -v
+      if: hashFiles('tests/*.py') != ''  # Only if tests exist
