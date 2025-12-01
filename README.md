@@ -101,63 +101,35 @@ source .venv/bin/activate
 JAVA_HOME=~/.jenv/versions/17.0.8.1 python -c "from pyspark.sql import SparkSession; spark = SparkSession.builder.appName('test').master('local[1]').getOrCreate(); print('✅ Success'); spark.stop()"
 ```
 
-**Need help?** See [QUICKSTART.md](QUICKSTART.md) for detailed setup instructions.
+**Need help?** See [docs/QUICKSTART.md](docs/QUICKSTART.md) for detailed setup instructions.
 
 ## 🎯 Project Structure
 
 ```
 learn-pyspark-1/
 ├── notebooks/               # 🎓 Jupyter notebooks (start here!)
-│   ├── 01_dataframe_basics.ipynb
-│   ├── 02_aggregations.ipynb
-│   ├── 03_joins.ipynb
-│   ├── 04_analytics_udfs.ipynb
-│   └── 05_search_indexing.ipynb
 ├── jobs/                    # Python script versions
-│   ├── 01_dataframe_basics.py
-│   ├── 02_aggregations.py
-│   ├── 03_joins.py
-│   ├── 04_analytics_udfs.py
-│   └── 05_search_indexing.py
 ├── utils/                   # Shared utilities
-│   ├── spark_session.py    # SparkSession factory
-│   └── data_generator.py   # Sample data generation
-├── data/                    # Sample datasets (generated)
-├── docs/                    # Learning materials
-│   ├── concepts.md         # Core PySpark concepts
-│   ├── CHEATSHEET.md       # Quick syntax reference
-│   └── LEARNING_FLOW.md    # Visual learning roadmap
-├── .env                     # Environment configuration (local)
-├── .env.example             # Environment template
-├── start_jupyter.py         # Start Jupyter server
+├── docs/                    # All documentation
+├── data/                    # Sample datasets (auto-generated)
 └── output/                  # Job outputs
 ```
 
 ### 📖 Documentation
 
-- **[Core Concepts](docs/concepts.md)** - Start here! Understand Spark fundamentals
-- **[Cheat Sheet](docs/CHEATSHEET.md)** - Quick reference for common operations
-- **[Learning Flow](docs/LEARNING_FLOW.md)** - Visual guide to your learning journey
+**Learning Resources:**
+- **[Core Concepts](docs/concepts.md)** - Spark fundamentals explained
+- **[Cheat Sheet](docs/CHEATSHEET.md)** - Quick reference guide
+- **[Learning Flow](docs/LEARNING_FLOW.md)** - Visual learning roadmap
+
+**Setup & Configuration:**
+- **[Quick Start](docs/QUICKSTART.md)** - Detailed setup instructions
+- **[Troubleshooting](docs/TROUBLESHOOTING.md)** - Common issues and solutions
+- **[Environment Setup](docs/ENVIRONMENT_SETUP.md)** - Configure .env and Jupyter
+
+**Development:**
 - **[Code Quality Guide](docs/CODE_QUALITY.md)** - Python hygiene tools and best practices
-- **[Notebooks README](notebooks/README.md)** - Guide to using Jupyter notebooks
-- **[Quick Start](QUICKSTART.md)** - Detailed setup instructions
-- **[Environment Setup](ENVIRONMENT_SETUP.md)** - Configure .env and Jupyter
-- **[Troubleshooting](TROUBLESHOOTING.md)** - Common issues and solutions
-- **[Project Summary](PROJECT_SUMMARY.md)** - Complete project overview
-
-### ⚙️ Configuration
-
-The project uses a `.env` file for configuration:
-
-```bash
-# Copy example and customize
-cp .env.example .env
-
-# Edit .env to set:
-# - Spark memory settings
-# - Jupyter port and token
-# - Project paths
-```
+- **[Notebooks Guide](notebooks/README.md)** - Using Jupyter notebooks
 
 ## 📚 Learning Modules (4 hours total)
 
