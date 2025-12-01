@@ -33,9 +33,11 @@ def get_spark_session(app_name="PySpark Learning", local_mode=True):
     builder = builder.config("spark.sql.adaptive.enabled", "true")  # Enable adaptive query execution
     builder = builder.config("spark.sql.adaptive.coalescePartitions.enabled", "true")
     
-    # Suppress excessive logging (set to INFO, WARN, or ERROR)
+    # Suppress excessive logging with Log4j2 configuration
+    project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    log4j2_path = os.path.join(project_root, "log4j2.properties")
     builder = builder.config("spark.driver.extraJavaOptions", 
-                            "-Dlog4j.configuration=file:log4j.properties")
+                            f"-Dlog4j.configurationFile=file:{log4j2_path}")
     
     spark = builder.getOrCreate()
     
