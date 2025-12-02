@@ -23,10 +23,10 @@ repos:
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
+        exclude: ^notebooks/
 
-  - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.11.2
+  - repo: https://github.com/kynan/nbstripout
+    rev: 0.7.1
     hooks:
-      - id: mypy
-        additional_dependencies: [types-all]
-        args: [--ignore-missing-imports, --no-strict-optional]
+      - id: nbstripout
+        description: Strip output from Jupyter notebooks
